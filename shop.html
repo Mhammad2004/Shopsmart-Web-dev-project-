@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopsmart-Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- CSS -->
+<style>
+    .p {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        /* border: 0.5px solid; */
+        background-color: white;
+        height: 400px;
+        width: 250px;
+        border-radius: 20px;
+        transition: 0.5s;
+        margin: 10px;
+    }
+
+    .p:hover {
+        scale: 1.05;
+    }
+
+    .three-pros {
+        gap: 20px;
+    }
+
+    .three-pros .pro-img {
+        background-image: url("https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 200px;
+        width: 220px;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 10px;
+    }
+
+    .pro-details {
+        margin: 20px;
+    }
+
+    .pro-details .pro-name {
+        font-size: 15px
+    }
+
+    .pro-details .pro-brand {
+        font-size: 13px
+    }
+
+    .pro-details .pro-price {
+        font-size: 18px
+    }
+
+    .pro-details button {
+        background-color: #b08f66;
+        font-size: 17px;
+        padding: 5px 20px;
+        border-radius: 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        font-weight: 500;
+        color: white;
+        transition: 0.5s;
+    }
+
+    .pro-details button:hover {
+        background-color: #532e01;
+    }
+
+    .sec {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 50px;
+    }
+</style>
+
+
+<!-- HTML -->
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li>About</li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a style="color: black;" href="">🛒︎</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="sec flex justify align">
+        </div>
+    </div>
+    <footer id="Contact">
+        <div><a href="">Home</a></div>
+        <div><a href="">Shop</a></div>
+        <div><a href="">About Us</a></div>
+        <div><a href="">Contact</a></div>
+        <div><a href="">FAQs</a></div>
+        <div style="text-align: center;">📍 Karachi, Pakistan
+            📧 support@shopsmart.com
+            ☎️ +92 300 1234567</div>
+        <p style="text-align: center;">© 2025 ShopSmart. All rights reserved.
+            Designed with ❤️ by Hammad Waseem</p>
+    </footer>
+</body>
+
+
+<!-- JavaScript -->
+<script>
+    async function data() {
+    let a = await fetch("https://dummyjson.com/products")
+    let data = await a.json()
+    var product = data.products
+    console.log(data.products);
+    function getpro(cat, className) {
+        var count = 0;
+        for (let i = 0; i < product.length; i++) {
+            if (product[i].category === cat) {
+                var ad1 = document.createElement("div")
+                let pro2 = `
+<div class="p p1" onclick="openProduct(${product[i].id})">
+    <div class="pro-img" style="background-image: url('${product[i].thumbnail}');"></div>
+    <div class="line"></div>
+    <div class="pro-details">
+        <div class="pro-name"><h3>${product[i].title}</h3></div>
+        <div class="pro-brand">${product[i].brand}</div>
+        <div class="pro-price">$${product[i].price}</div>
+        <button>Add</button>
+    </div>
+</div>
+`;
+                ad1.innerHTML = pro2;
+                document.querySelector(`${className}`).appendChild(ad1);
+                count++
+
+                // if (count === 4) {
+                //     break;
+                // }
+            }
+        }
+    }
+
+    getpro("beauty", ".sec")
+    getpro("groceries", ".sec")
+    getpro("furniture", ".sec")
+    getpro("fragrances", ".sec")
+
+}
+
+function openProduct(id) {
+    window.location.href = `product.html?id=${id}`;
+}
+data()
+window.addEventListener("scroll", () => {
+    document.querySelectorAll(".reveal").forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+});
+
+</script>
+
+</html>

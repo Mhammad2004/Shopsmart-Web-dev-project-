@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>Shop</li>
+            <li>About</li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a style="color: black;" href="">🛒︎</a></li>
+        </ul>
+    </nav>
+    <div id="product-container"></div>
+    <footer id="Contact">
+        <div><a href="">Home</a></div>
+        <div><a href="">Shop</a></div>
+        <div><a href="">About Us</a></div>
+        <div><a href="">Contact</a></div>
+        <div><a href="">FAQs</a></div>
+        <div style="text-align: center;">📍 Karachi, Pakistan
+            📧 support@shopsmart.com
+            ☎️ +92 300 1234567</div>
+        <p style="text-align: center;">© 2025 ShopSmart. All rights reserved.
+            Designed with ❤️ by Hammad Waseem</p>
+    </footer>
+    <script src="product.js"></script>
+</body>
+<script>
+    async function loadProduct() {
+    let url = window.location.href;             
+    let id = url.split("id=")[1];                
+
+    let response = await fetch(`https://dummyjson.com/products/${id}`);
+    let product = await response.json();
+
+    document.getElementById("product-container").innerHTML = `
+        <div class="single-product">
+            <img src="${product.thumbnail}">
+            
+            <div class="pro-det">
+                <h1>${product.title}</h1>
+                <h3><b>Brand:</b> ${product.brand}</h3>
+                <h2><b>Price:</b> $${product.price}</h2>
+                <p>${product.description}</p>
+                <p><b>Category:</b> ${product.category}</p>
+                <p><b>Rating:</b> ${product.rating} ⭐</p>
+                <p><b>Stock:</b> ${product.stock}</p>
+            </div>
+
+            <button onclick="history.back()">Back</button>
+        </div>
+    `;
+}
+loadProduct();
+
+</script>
+
+</html>
