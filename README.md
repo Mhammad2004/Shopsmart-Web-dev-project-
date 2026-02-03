@@ -87,12 +87,3 @@ Designed with ❤️ as a frontend practice project.
 This project is open-source and free to use for learning and educational purposes.
 
 
----
-
-If you want, I can also:
-- Customize this README for **GitHub portfolio**
-- Add **screenshots section**
-- Write a **LinkedIn project description**
-- Or create a **product.html README part**
-
-Just tell me 👌
