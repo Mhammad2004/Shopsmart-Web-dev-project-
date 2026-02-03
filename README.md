@@ -81,7 +81,7 @@ No additional setup required 🎉
 Hammad Waseem
 📍 Karachi, Pakistan
 
-🔗 Live Demo: https://YOUR_USERNAME.github.io/shopsmart/](https://mhammad2004.github.io/Shopsmart-Web-dev-project-/
+🔗 Live Demo: https://mhammad2004.github.io/Shopsmart-Web-dev-project-/
 
 Designed with ❤️ as a frontend practice project.
 
